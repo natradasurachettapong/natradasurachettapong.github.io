@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<!--
+	Dopetrope by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Natrada Surachettapong-Shopee</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+	</head>
+	<body class="right-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+
+					<!-- Logo -->
+						<h1><a href="index.html">Art Toy Price Prediction on Shopee</a></h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="aboutme.html">About me</a></li>
+								<li>
+									<a href="#">Projects</a>
+									<ul>
+										<li><a href="index.html#myprojects">My Projects</a></li>
+										<li><a href="index.html#workexp">Work Experience</a></li>
+									</ul>
+								</li>
+								<li><a href="#footer">Contact</a></li>
+								<li><a href=".\images\Natrada_Surachettapong.pdf" style="text-decoration: none; color: #5d5d5d; display: inline-block; 
+									transition: all 0.3s ease; border: 2px solid transparent;"
+							 onmouseover="this.style.backgroundColor='white'; this.style.color='#e67e22'; this.style.borderColor='#e67e22';"
+							 onmouseout="this.style.backgroundColor=''; this.style.color=''; this.style.borderColor='transparent';">Resume</a></li>
+							</ul>
+						</nav>
+
+				</section>
+
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+						<div class="row">
+							<div class="col-8 col-12-medium">
+
+								<!-- Content -->
+									<article class="box post">
+										<a href="#" class="image featured"><img src="images/shopeebg.png" alt="" /></a>
+										<header>
+											<h2 style="line-height: 1;">Art Toy Price Prediction<wbr style="margin-bottom: 10px;"> on Shopee</h2>
+                                            <h4 style="text-align: right;">March - April 2024</h4>
+										</header>
+										<p>
+											A machine learning solution designed to predict the price of 'Art Toys' on the Shopee platform. This project focuses on developing and training ML model, processing data, and selecting suitable algorithms and methodologies to enhance accuracy. It aims to determine optimal pricing, analyze price changes' impact on sales, and assess how various factors influence pricing.
+										</p>
+										<h3>Data Collection:</h3>
+										<p>We begin by collecting data through web scraping from the Shopee website <a href="https://shopee.co.th/">(https://shopee.co.th/)</a>. Using BeautifulSoup, we extract the HTML content, while Selenium is used to automate and control the web browser. Each retrieved data row represents a top-selling product on the Shopee platform when searching for "Art Toy."</p>
+										<p>The dataset consists of six features as follows:</p>
+										<ul>
+											<li><p>Product</p></li>
+											<li><p>Promotion Price</p></li>
+											<li><p>Percent Discount</p></li>
+											<li><p>Sold Per Month</p></li>
+											<li><p>Location</p></li>
+											<li><p>Rating</p></li>
+										</ul>
+										<p>Click to view the Data Collection <a href="https://colab.research.google.com/drive/1z_hUjhnv9CeOBG0WNI23yItDyGPUNZBj?usp=sharing">(Web Scraping) Code.</a></p>
+										<p>Next, perform data exploration and adjustments, such as converting product names to text strings, replacing the '฿' symbol, converting price values (e.g., from 'k' to 1000), and using the count of stars/images for rating extraction.</p>
+										<h3>Data Processing</h3>
+										<ul>
+											<li><p>Separate numerical and categorical columns.</p></li>
+											<li><p>Add a price_cut column to categorize products into high and low price groups. If the promotion price is less than or equal to 279.6 (40th percentile), assign a value of 0 for low price. If the promotion price is greater than 347.40 (60th percentile), assign a value of 1 for high price. Drop the middle price range.</p></li>
+											<li><p>Convert the categorical column into binary for the 'location' feature.</p></li>
+											<li><p>Fill in missing values using SimpleImputer.</p></li>
+											<li><p>Scale features using MinMaxScaler.</p></li>
+										</ul>
+										<h4><b>Features Selection</b></h4>
+										<ul style="list-style-type: square;">
+											<li><p><b>SelectKBest: Mutual Information  :</b> ['percentDiscount','soldPerMonth','Overseas']</p></li>
+											<li><p><b>Correlation  :</b>['percentDiscount','Overseas’, ‘จังหวัดกรุงเทพมหานคร Bangkok’]</p></li>
+											<li><p><b>SelectKBest: Chi-squared  :</b> [‘จังหวัดกรุงเทพมหานคร Bangkok’,'percentDiscount', 'Overseas']</p></li>
+										</ul>
+										<section>
+										<h3>Model Training</h3>
+										<h4><b>Algorithm Selection</b></h4>
+										<ul style="list-style-type: square;">
+											<li><p><b>K-Nearest Neighbor (KNN):</b> Effective for non-linear relationships, Simple to understand</p></li>
+											<li><p><b>Naive Bayes:</b> Works well when features are independent</p></li>
+											<li><p><b>Artificial Neural Networks (ANN):</b> Handles complex non-linear relationships ,Suitable for various types of data</p></li>
+											<li><p><b>Random Forest:</b> Robust across different datasets.</p></li>
+										</ul>
+										<p>After selecting the appropriate machine learning algorithm for predicting the sale price of 'Art Toys' on the Shopee platform, the next steps are model training and hyperparameter tuning , using techniques like grid search, to optimize the performance of the model.</p>
+										</section>
+										<h3>Result and Evaluation</h3>
+										<p>For performance evaluation, the results of each model are compared using the classification report and ROC AUC to display accuracy values. Additionally, the ROC curve is plotted for both the "low" and "high" price classes, summarizing the performance of each model as follows:</p>
+										<figure style="align-items: center;">
+											<img src="images/shopeesum.jpg" alt="" style="width: 100%; object-fit: cover;">
+											<p style="text-align: center;"><i>Model Performance Comparison Matrix</i></p>
+										</figure>
+										<p>It can be concluded that Naive Bayes achieved the best score of 0.755, while Random Forest performed the best in terms of accuracy (0.758), recall (0.76), and precision (0.76).</p>
+										
+									</article>
+
+							</div>
+							<div class="col-4 col-12-medium">
+
+								<!-- Sidebar -->
+									<section class="box">
+										<a href="#" class="image featured"><img src="images/shopeelogo.jpg" alt="" /></a>
+										<header>
+											<h3>Project Resources:</h3>
+										</header>
+										<p>Learn more about this project through the following resources</p>
+										<ul class="divided">
+											<li><a href="https://drive.google.com/file/d/1xIvL4lQpkcWFAUTOeHyXKrDI3BD7O87w/view?usp=sharing">Presentation Slides</a></li>
+											<li><a href="https://drive.google.com/file/d/1FUOWC1hKs-wHVMzHUwGiU259YYTKQCVJ/view?usp=sharing">Raw Data</a></li>
+											<li><a href="https://colab.research.google.com/drive/1z_hUjhnv9CeOBG0WNI23yItDyGPUNZBj?usp=sharing">Data collection(web scraping) code</a></li>
+											<li><a href="https://drive.google.com/file/d/19SZyYEa38owTwGlZ8k0P9Kr1TqbQ7jcE/view?usp=sharing">Data Dictionary</a></li>
+											<li><a href="https://youtu.be/pHwAsTmm9Uc">Presentation Video</a></li>
+										</ul>
+										<footer>
+											<a href="https://colab.research.google.com/drive/121J0dipiH6_-ZOm6pXQT69oYtJGeO3Vw?usp=sharing" class="button alt">Code file in Colab</a>
+										</footer>
+									</section>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<section id="footer">
+					<div class="container">
+						<div class="row">
+							
+							<div class="col-12">
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+										<li><a class="icon brands fa-linkedin-in" href="https://www.linkedin.com/in/natrada-surachettapong-a222b5325/" style="background-color: #0A66C2;" onmouseover="this.style.backgroundColor='#004182'; this.style.transform='scale(1.1)';"
+											onmouseout="this.style.backgroundColor='#0A66C2'; this.style.transform='scale(1)';"><span class="label">LinkedIn</span></a></li>
+										<li><a class="icon brands fa-github" href="https://github.com/tsebtseb" style="background-color: #6e5494;" onmouseover="this.style.backgroundColor='#563d7c'; this.style.transform='scale(1.1)';"
+											onmouseout="this.style.backgroundColor='#6e5494'; this.style.transform='scale(1)';"><span class="label">Github</span></a></li>
+										<li><a class="icon brands fa-line" href="https://line.me/ti/p/~anglebest" style="background-color: #06C755;" onmouseover="this.style.backgroundColor='#04a340'; this.style.transform='scale(1.1)';"
+											onmouseout="this.style.backgroundColor='#06C755'; this.style.transform='scale(1)';"><span class="label">Line</span></a></li>
+									</ul>
+									<ul class="contact">
+										<li>
+											<h3><i class="fa-solid fa-location-dot" style="color: white; margin-right: 0.75em"></i>Address</h3>
+											<p>
+												315/96 Phayathai Road, Pathum Wan, Bangkok, Thailand, 10330
+											</p>
+										</li>
+										<li>
+											<h3><i class="fa-solid fa-envelope" style="color: white; margin-right: 0.75em"></i>Email</h3>
+											<p><a href="mailto:natrada.surachettapong@gmail.com">natrada.surachettapong@gmail.com</a></p>
+										</li>
+										<li>
+											<h3><i class="fa-solid fa-phone" style="color: white; margin-right: 0.75em"></i>Phone</h3>
+											<p> +66(0)92 380 1361 </p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</div>
+				</section>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
